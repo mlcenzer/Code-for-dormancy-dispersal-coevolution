@@ -1,0 +1,327 @@
+
+####### All of these require that you have stored data summaries that are filed in a particular format (as they are in the included ./model_output folder). The folders must be labelled "noisy" and "striped" and the seven folders in each must maintain their names/order to properly generate these figures. However, a savvy tinkerer could make these work for other organizations by modifying the code here and in the plot_functions_local.R script.
+
+setwd("~/Documents/GitHub/Code-for-dormancy-dispersal-coevolution")
+source('src/initialize.R')
+source('figures/plot_functions_local.R')
+library(viridis)
+library(stringr)
+library(autoimage)
+library(gridBase)
+library(grid)
+
+write_fixed_disp_figure <- function(write_to="./figures", load_from="./model_output/striped", legend_text_1, legend_text_2, stripes, outlier){
+	
+	if(!is.na(outlier)) {stripes_all <- c(stripes, outlier)}
+  	
+  	diap_list <- make_summary_multi(variable="diap", stripes=stripes_all, load_from=load_from)
+
+	disp_list <- make_summary_multi(variable="disp", stripes=stripes_all, load_from=load_from)#browser()
+
+	#write to pdf
+	pdf(file=paste(write_to,"/fixed_stripes_two_panel.pdf", sep=""), width=5.5, height=9.5)
+	split.screen(rbind(c(0,1,0.53,1), c(0,1,0,0.53)))
+	   screen(1)
+	  par(mai=c(.3, .9, .5, .1), ps=18) #(bottom,left,top, right)
+  		plot_multi_stripes(summary=diap_list[[1]], summaries_list=diap_list[2:3], ylim=c(0,0.55), ylab="Dormancy probability", header="", legend=T, legend_text=legend_text_1, outlier=outlier, legend_title = expression(paste(sigma["m"])))
+  			mtext("A. Dormancy with fixed dispersal", adj=0.01)
+  		lines(x=c(1,1), y=c(-0.5,2), lty=3)
+  		lines(x=c(8,8), y=c(-0.5,2), lty=3)
+  		lines(x=c(16,16), y=c(-0.5,2), lty=3)
+  		mtext("\\\\", side=1, line=-0.3, at=17)
+  		axis(side=1, at=19, labels="32")  	
+  	
+  		screen(2)
+	   	par(mai=c(.8, .9, .5, .1), ps=18) #(bottom,left,top, right)
+  			plot_multi_stripes(summary=disp_list[[5]], summaries_list=disp_list[6:7], ylim=c(0,1.8), ylab="Dispersal distance", header="", legend=T, legend_text=legend_text_2, outlier=outlier, legend_title=expression(paste(italic("q"["f"]))))
+  			 mtext("B. Dispersal with fixed dormancy", adj=0.01)	
+  		lines(x=c(1,1), y=c(-0.5,2), lty=3)
+  		lines(x=c(8,8), y=c(-0.5,2), lty=3)
+  		lines(x=c(16,16), y=c(-0.5,2), lty=3)
+  		mtext("\\\\", side=1, line=-0.3, at=17)
+  		axis(side=1, at=19, labels="32") 
+  
+	close.screen(all.screens = TRUE)
+	dev.off()
+}
+write_fixed_disp_figure(stripes=1:16, outlier=32, legend_text_1 = c("0.01", "0.05", "0.5"), legend_text_2=c("0.1","0.3", "0.5"))
+
+
+
+
+write_kin_comp_summary_figure <- function(write_to="./figures", load_from="./model_output/striped", stripes, outlier=F){
+  
+  folders_list=list.files(path=load_from)
+  tau_change_list=list()
+  list_num <- 1
+  for(folder in folders_list){
+    all_files<-list.files(path=paste(load_from, "/", folder, sep=""))	
+    tau_change_summary<-list()
+    file_num <- 1
+    for(file in all_files){
+      load(paste(load_from, "/", folder, "/", file, sep=""))
+      tau_change_summary[[file_num]] <- summary_list[[3]]
+      names(tau_change_summary)[[file_num]]<-strsplit(strsplit(file, "stripes_")[[1]][2], "_")[[1]][1]
+      file_num <- file_num + 1
+    }
+    tau_change_list[[list_num]] <- tau_change_summary
+    names(tau_change_list)[[list_num]] <- folder
+    list_num <- list_num + 1
+  }
+
+  pdf(file=paste(write_to, "/kin_comp_summary.pdf", sep=""), width=12, height=10.5)
+  split.screen(rbind(c(0,0.53,0.53,1), c(0.53,1,0.53,1), c(0,0.53,0,0.53), c(0.53,1,0,0.53)))
+  
+  par(mai=c(0.5, 1.1, 0.4, 0), ps=18)
+  screen(1)
+  plot_kin_comp_tau(summary_list=tau_change_list[[1]], stripes_all=stripes, disp_ev=F, header=expression(paste("A. Dispersal fixed (", sigma["m"], "=0.01)")), legend=TRUE, ylim=c(0,0.009), outlier=outlier, ylab=T)
+  
+  screen(2)
+  par(mai=c(0.5, 0.4, 0.4, 0.1))
+  plot_kin_comp_tau(summary_list=tau_change_list[[2]], stripes_all=stripes, disp_ev=F, header=expression(paste("B. Dispersal fixed (", sigma["m"], "=0.05)")), legend=FALSE, ylim=c(0,0.009), outlier=outlier, yaxt="n", ylab=F)
+	axis(side=2, labels=F)
+	  add.gray.scale <- function() {
+    	vp <- baseViewports()
+    	pushViewport(vp$inner,vp$figure,vp$plot)
+    	## adjust x, y, and height to move location around, etc
+    	pushViewport(viewport(x=0.91, y=0.92, width=0.04, height=.4,
+        	                  just=c("left","top")))
+    	op <- par(plt=gridPLT(),new=T)
+    	on.exit(par(op))
+    	cols <- c(viridis(length(stripes)))
+   	 	if(outlier==T) cols <- c(viridis(length(stripes)-1), rgb(1,0,0))
+    	image(matrix(1:17, ncol=17),
+        	  col=cols, xaxt="n", yaxt="n")
+    	popViewport(4)
+  	}    
+  add.gray.scale()
+  ## can then add text manually
+  text(max(stripes), x=-1, y=1, pos=2, cex=0.7)
+  text(min(stripes), x=-1, y=0, pos=2, cex=0.7)
+  text(x=0, y=1.13, expression(paste(italic("n"["p"]))))
+  
+  screen(3)
+  par(mai=c(0.9, 1.1, 0.4, 0))
+  plot_kin_comp_tau(summary_list=tau_change_list[[3]], stripes_all=stripes, disp_ev=F, header=expression(paste("C. Dispersal fixed (", sigma["m"], "=0.50)")), legend=FALSE, ylim=c(0,0.009), outlier=outlier, ylab=T)
+
+  screen(4)
+  par(mai=c(0.9, 0.4, 0.4, 0.1))
+  plot_kin_comp_tau(summary_list=tau_change_list[[4]], stripes_all=stripes, disp_ev=T, header="D. Coevolution", legend=FALSE, ylim=c(0,0.009), outlier=outlier, yaxt="n", ylab=F)
+  	axis(side=2, labels=F)
+  close.screen(all.screens=TRUE)
+  dev.off()
+}
+
+write_kin_comp_summary_figure(stripes=c(1:16, 32), outlier=T)
+
+
+#write multi-panel figure with noisy landscapes
+
+write_diap_summary_figure_multi_panel_noisy <- function(write_to="./figures", load_from="./model_output/noisy", acl=c(0.001, 0.01, 0.1), land_type="noisy"){
+  	#browser()
+  diap_list <- make_summary_multi(variable="diap", acl=acl, load_from=load_from, stripes=NA)
+
+ disp_list <- make_summary_multi(variable="disp", acl=acl, load_from=load_from, stripes=NA)
+  
+  #write to pdf
+  pdf(file=paste(write_to,"/coevolution_noisy_3_panel.pdf", sep=""), width=5.5, height=11)
+  #split.screen(rbind(c(0,1,0.63,1), c(0,1,0.18,0.63), c(0.16, 0.44, 0, 0.18), c(0.44, 0.72, 0, 0.18), c(0.72, 1, 0, 0.18)))
+	split.screen(rbind(c(0.16, 0.44, 0.82, 1), c(0.44, 0.72, 0.82, 1), c(0.72, 1, 0.82, 1), c(0, 1, 0.45, 0.82), c(0, 1, 0, 0.45)))
+
+  screen(1)
+
+ 	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_1 <- base_prms(land_type = land_type, acl=0.1)
+  	if(land_type=="noisy"){
+  		#browser()
+  	   mat <- cn_2D(acl=prms_1$acl, n=128, amp=1)$cn
+       prms_1$land_mat <- abs(min(mat)) + mat
+       prms_1$land_max <- max(prms_1$land_mat)	
+  	}
+
+  	plot_hm(prms_1, i="", pop=NA)
+	mtext("A. Landscapes", adj=0.01)
+	
+   screen(2)
+	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_2 <- base_prms(land_type = land_type, acl=0.01) #acl=acl[round(length(acl)/2)])
+  	if(land_type=="noisy"){
+  		#browser()
+  	   mat <- cn_2D(acl=prms_2$acl, n=128, amp=1)$cn
+       prms_2$land_mat <- abs(min(mat)) + mat
+       prms_2$land_max <- max(prms_2$land_mat)	
+  	}
+  
+  	plot_hm(prms_2, i="", pop=NA)
+
+   screen(3)
+	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_3 <- base_prms(land_type = land_type, acl=0.001)
+  	if(land_type=="noisy"){
+  		#browser()
+  	   mat <- cn_2D(acl=prms_3$acl, n=128, amp=1)$cn
+       prms_3$land_mat <- abs(min(mat)) + mat
+       prms_3$land_max <- max(prms_3$land_mat)	
+  	}
+
+  	plot_hm(prms_3, i="", pop=NA) 
+  	  
+  screen(4)
+  par(mai=c(.3, .9, .2, .1), ps=18) #(bottom,left,top, right)
+  plot_multi_noisy(summary=diap_list[[1]], ylim=c(0,0.4), ylab="Dormancy probability", header="B. Coevolution - dormancy", legend = F)  	
+    lines(x=c(-log10(0.001),-log10(0.001)), y=c(-0.5,2), lty=3)
+  	lines(x=c(-log10(0.01),-log10(0.01)), y=c(-0.5,2), lty=3)
+  	lines(x=c(-log10(0.1),-log10(0.1)), y=c(-0.5,2), lty=3)
+  
+  screen(5)
+   par(mai=c(.9, .9, .5, .1), ps=18) #(bottom,left,top, right)
+  plot_multi_noisy(summary=disp_list[[1]], ylim=c(0,1.6), ylab="Dispersal distance", header="C. Coevolution - dispersal", legend = F)
+  	lines(x=c(-log10(0.001),-log10(0.001)), y=c(-0.5,2), lty=3)
+  	lines(x=c(-log10(0.01),-log10(0.01)), y=c(-0.5,2), lty=3)
+  	lines(x=c(-log10(0.1),-log10(0.1)), y=c(-0.5,2), lty=3)
+  	 
+ 	
+  close.screen(all.screens=TRUE)
+  dev.off()
+  }
+
+write_diap_summary_figure_multi_panel_noisy(acl=c(0.001, 0.0014, 0.0019, 0.0025, 0.0035, 0.005, 0.006, 0.0075, 0.0082, 0.0091, 0.010, 0.013, 0.016, 0.0200, 0.025, 0.035, 0.05, 0.075, 0.100))
+
+
+write_diap_disp_corr <- function(write_to="./figures",
+                                 #load_from="./model_output/noisy/acl_runs", 
+                                 load_from = "./model_output/striped/disp_ev_T_0.05_init_diap_0.00_100k",
+                                 land_var,
+                                 acl=F,
+                                 stripes=F,
+                                 outlier=F) {
+  
+  correlation_list <- make_summary_corr(land_var=land_var, load_from=load_from, acl=acl, stripes=stripes)
+      if(acl==T) land_var <- sort(-log10(land_var))                                 
+
+  pdf(file=paste(write_to,"/diap_disp_correlation_striped_test.pdf", sep=""), width=10.5, height=5.5)
+  
+  par(mai=c(0.8,0.8,0.2,0.1))
+  color=c(viridis((length(land_var)), alpha=0.4))
+  if(outlier==T)  color=c(viridis((length(land_var)-1), alpha=0.4), rgb(1,0,0,alpha=0.4))
+  plot(NA, xlim=c(0.05,2.45), ylim=c(0,0.6),
+       xlab="Dispersal distance",
+       ylab="Diapause probability", las=1)
+  for(var in land_var) {
+    name <- as.character(var)
+    norm_disp<- correlation_list[name][[1]][,'dispersal']                               	
+    points(correlation_list[name][[1]][,'diapause']~norm_disp, col=color[which(land_var==var)], pch=19)
+  }
+  
+  add.gray.scale <- function() {
+    vp <- baseViewports()
+    pushViewport(vp$inner,vp$figure,vp$plot)
+    ## adjust x, y, and height to move location around, etc
+    pushViewport(viewport(x=0.92, y=0.95, width=0.04, height=.4,
+                          just=c("left","top")))
+    op <- par(plt=gridPLT(),new=T)
+    on.exit(par(op))
+    cols <- c(viridis(length(land_var)))
+    if(outlier==T)  cols=c(viridis((length(land_var)-1)), rgb(1,0,0))
+    image(matrix(1:17, ncol=17),
+          col=cols, xaxt="n", yaxt="n")
+    popViewport(4)
+  }    
+  add.gray.scale()
+  ## can then add text manually
+  text(max(land_var), x=-1, y=1, pos=2)
+  text(min(land_var), x=-1, y=0, pos=2)
+  if(stripes==T) text(x=0, y=1.1, expression(paste(italic("n"["p"]))))
+  if(acl==T) text(x=0, y=1.1, expression(paste(italic("acl"))))
+  dev.off()
+}
+
+write_diap_disp_corr(land_var=c(0.001, 0.0014, 0.0019, 0.0025, 0.0035, 0.005, 0.006, 0.0075, 0.0082, 0.0091, 0.010, 0.013, 0.016, 0.0200, 0.025, 0.035, 0.05, 0.075, 0.100), acl=T)
+write_diap_disp_corr(land_var=c(1:16, 32), stripes=T, outlier=T)
+
+
+write_fixed_disp_figure <- function(write_to="./figures", load_from="./model_output/noisy", acl=c(0.001, 0.01, 0.1), land_type="noisy", legend_text_1, legend_text_2){
+	diap_list <- make_summary_multi(variable="diap", acl=acl, load_from=load_from, stripes=NA)
+	disp_list <- make_summary_multi(variable="disp", acl=acl, load_from=load_from, stripes=NA)
+
+	#write to pdf
+	pdf(file=paste(write_to, "/fixed_noisy_two_panel.pdf", sep=""), width=5.5, height=8.5)
+	split.screen(rbind(c(0,1,0.53,1), c(0,1,0,0.53)))
+	   par(mai=c(.3, .9, .5, .1), ps=18) #(bottom,left,top, right)
+	   screen(1)
+  			plot_multi_noisy(summary=diap_list[[2]], summaries_list=diap_list[3:4], ylim=c(0,.55), ylab="Dormancy probability", header="", legend=T, legend_text=legend_text_1, legend_title=expression(paste(sigma["m"])))
+  			mtext("A. Dormancy with fixed dispersal", adj=0.01)
+  			lines(x=c(-log10(0.001),-log10(0.001)), y=c(-0.5,2), lty=3)
+  			lines(x=c(-log10(0.01),-log10(0.01)), y=c(-0.5,2), lty=3)
+  			lines(x=c(-log10(0.1),-log10(0.1)), y=c(-0.5,2), lty=3)
+  	
+  		screen(2)
+	   	par(mai=c(.8, .9, .5, .1), ps=18) #(bottom,left,top, right)
+  			plot_multi_noisy(summary=disp_list[[5]], summaries_list=disp_list[6:7], ylim=c(0,1.8), ylab="Dispersal distance", header="", legend=T, legend_text=legend_text_2, legend_title=expression(paste(italic("q"["f"]))))
+  			 mtext("B. Dispersal with fixed dormancy", adj=0.01)	
+  		   	lines(x=c(-log10(0.001),-log10(0.001)), y=c(-0.5,2), lty=3)
+  			lines(x=c(-log10(0.01),-log10(0.01)), y=c(-0.5,2), lty=3)
+  			lines(x=c(-log10(0.1),-log10(0.1)), y=c(-0.5,2), lty=3)
+  
+	close.screen(all.screens = TRUE)
+	dev.off()
+}
+write_fixed_disp_figure(acl=c(0.001, 0.0014, 0.0019, 0.0025, 0.0035, 0.005, 0.006, 0.0075, 0.0082, 0.0091, 0.010, 0.013, 0.016, 0.0200, 0.025, 0.035, 0.05, 0.075, 0.100), legend_text_1 = c("0.01", "0.05", "0.5"), legend_text_2=c("0.1","0.3", "0.5"))
+
+
+#write diapause probability summary figure
+write_diap_summary_figure_multi_panel <- function(write_to="./figures", load_from="./model_output", legend_text=c("0.01","0.05","0.50"), stripes=c(1:16), outlier=NA){
+
+	if(!is.na(outlier)) {stripes_all <- c(stripes, outlier)}
+  	
+  	diap_list <- make_summary_multi(variable="diap", stripes=stripes_all, load_from=load_from)
+
+	disp_list <- make_summary_multi(variable="disp", stripes=stripes_all, load_from=load_from)
+	
+	pop_list <- make_summary_multi(variable="pop_size", stripes=stripes_all, load_from=load_from)
+	
+  #write to pdf
+  pdf(file=paste(write_to, "/coevolution_3_panel.pdf", sep=""), width=5.5, height=11)
+
+ 	split.screen(rbind(c(0.16, 0.44, 0.82, 1), c(0.44, 0.72, 0.82, 1), c(0.72, 1, 0.82, 1), c(0, 1, 0.45, 0.82), c(0, 1, 0, 0.45)))
+ 	
+  screen(1)
+ 	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_1 <- base_prms(land_type = "striped", stripes=1, het=2)
+	plot_hm(prms_1, i="", pop=NA)
+	mtext("A. Landscapes", adj=0.01)
+
+  screen(2)
+	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_2 <- base_prms(land_type = "striped", stripes=8, het=2)   
+  	plot_hm(prms_2, i="", pop=NA)
+
+  screen(3)
+	par(mai=c(.2, .05, .3, .1), ps=18) #(bottom,left,top, right)
+  	prms_3 <- base_prms(land_type = "striped", stripes=16, het=2)
+  	plot_hm(prms_3, i="", pop=NA) 
+  	
+  screen(4)
+  par(mai=c(.3, .9, .2, .1), ps=18) #(bottom,left,top, right)
+  plot_multi_stripes(summary=diap_list[[4]], ylim=c(0,0.55), ylab="Dormancy probability", header="B. Coevolution - dormancy", legend=F, outlier=outlier)
+  lines(x=c(1,1), y=c(-0.5,2), lty=3)
+  lines(x=c(8,8), y=c(-0.5,2), lty=3)
+  lines(x=c(16,16), y=c(-0.5,2), lty=3)
+  mtext("\\\\", side=1, line=-0.3, at=17)
+  axis(side=1, at=19, labels="32")
+    
+  screen(5)
+   par(mai=c(.8, .9, .5, .1), ps=18) #(bottom,left,top, right)
+  plot_multi_stripes(summary=disp_list[[4]], ylim=c(0,1.7), ylab="Dispersal distance", header="C. Coevolution - dispersal", legend=F, outlier=outlier)
+  lines(x=c(1,1), y=c(-0.5,2), lty=3)
+  lines(x=c(8,8), y=c(-0.5,2), lty=3)
+  lines(x=c(16,16), y=c(-0.5,2), lty=3)
+  mtext("\\\\", side=1, line=-0.3, at=17)
+  axis(side=1, at=19, labels="32")  
+  
+  close.screen(all.screens=TRUE)
+  dev.off()
+
+  }
+
+write_diap_summary_figure_multi_panel(stripes=1:16, outlier=32, load_from="./model_output/striped")
