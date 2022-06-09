@@ -1,5 +1,6 @@
 ####### All of these require that you have stored data summaries that are filed in a particular format (as they are in the included ./model_output folder). The folders must be labelled "noisy" and "striped" and the seven folders in each must maintain their names/order to properly generate these figures. However, a savvy tinkerer could make these work for other organizations by modifying the code here and in the plot_functions_local.R script.
 
+#Update to your local directory here
 setwd("~/Documents/GitHub/Code-for-dormancy-dispersal-coevolution")
 source('src/initialize.R')
 source('MC plotting/plot_functions_local.R')

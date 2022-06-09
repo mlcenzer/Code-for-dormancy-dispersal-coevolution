@@ -1,4 +1,5 @@
-setwd("~/Dropbox/diapause_ibm")
+##Update to your local directory here
+setwd("~/Documents/GitHub/Code-for-dormancy-dispersal-coevolution")
 source('src/initialize.R')
 library(abind)
 library(scales)
