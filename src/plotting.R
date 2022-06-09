@@ -36,10 +36,12 @@ plot_hm <- function(prms, i, pop){
   kxy <- normalize_f(kxy.non.normalized,
                      prms$s_dim, prms$integrate_to)
 	
-  cols_dis <- colorRampPalette(c("white", "black"))
+  cols_dis <- colorRampPalette(c("black", "grey"))
 
   x <- y <- seq(0, prms$s_dim, length=257)
+
   landscape_mat <- outer(x, y, kxy)
+  
   colnames(landscape_mat) <- rownames(landscape_mat) <- x
 
   image(landscape_mat, col=cols_dis(12), xaxt='n', yaxt='n')

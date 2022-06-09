@@ -1,0 +1,946 @@
+18*40*52*1
+20*40*52*1
+20*40*52*1.254
+15*20*30
+19*40*52
+18*40*52*1.254
+18*40*52*1
+19*40*52*1
+5*10*8
+5*8*8
+6*8*8
+1148/7
+348.71*2
+697.42/5
+697.42/3
+(697.42/3)/4
+(697.42/3)/5
+697.42/14
+2*(697.42/14)
+3*(697.42/14)
+697.42/5
+#assignment#
+#
+#object#
+a<-1#
+#
+#vector#
+vec<-c(a,4)#
+#
+#matrix#
+mat<-matrix(vec, nrow=2, ncol=2)
+mat
+#function#
+breakfast_cals<-function(eggs, pancakes, bacon){#
+	cals<-eggs*78 + pancakes*86 + bacon*43#
+	cals#
+}
+breakfast_cals(eggs=2, pancakes=2, bacon=4)
+breakfast_cals(eggs=3, pancakes=2)
+breakfast_cals(eggs=3, pancakes=2, bacon=0)
+egg_days<-c(1,0,5,2,3,2,0)#
+pancake_days<-c(2,2,2,2,2,2,2)#
+bacon_days<-c(0,2,0,4,0,1,1)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)
+run_amount<-function(breakfast){#
+	distance<-(breakfast-300)/100#
+}
+rm()
+clear()
+vector<-c(1,2,4,7,1)
+vector
+matrix(0, nrow=2, ncol=3)
+breakfast_cals<-function(eggs, pancakes, bacon){#
+	cals<-eggs*78 + pancakes*86 + bacon*43#
+	cals#
+}
+breakfast_cals(eggs=2, pancakes=2, bacon=5)
+breakfast_cals(eggs=2, pancakes=2)
+breakfast_cals<-function(eggs=0, pancakes=0, bacon=0){#
+	cals<-eggs*78 + pancakes*86 + bacon*43#
+	cals#
+}
+breakfast_cals(eggs=2)
+#assignment#
+#
+#object#
+a<-1#
+#vector#
+vec<-c(a,4)#
+#matrix#
+mat<-matrix(vec, nrow=2, ncol=2)#
+#function#
+breakfast_cals<-function(eggs=0, pancakes=0, bacon=0){#
+	eggs*78 + pancakes*86 + bacon*43#
+}
+egg_days<-c(1,0,5,2,3,2,0)#
+pancake_days<-c(2,2,2,2,2,2,2)#
+bacon_days<-c(0,2,0,4,0,1,1)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)
+egg_days<-c(1,0,5,2,3,2,0)#
+pancake_days<-c(2,2,2,2,2,2,2)#
+bacon_days<-c(0,2)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)
+egg_days<-c(1,0,5,2,3,2,0)#
+pancake_days<-c(2,2,2,2,2,2,2)#
+bacon_days<-c(2)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)
+egg_days<-c(1,0,5,2,3,2)#
+pancake_days<-c(2,2,2,2,2,2)#
+bacon_days<-c(2,0)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)
+breakfast_cals(egg_days, pancake_days, bacon_days)
+breakfast_cals(bacon_days, egg_days, pancake_days)
+breakfast_cals(bacon=bacon_days, eggs=egg_days, pancakes=pancake_days)
+?seq
+seq()
+seq(2)
+?
+length
+length(bacon_days)
+length(eggs_days)
+length(egg_days)
+matrix<-matrix(egg_days, ncol=2, nrow=length(egg_days))
+matrix
+matrix[1,2]
+matrix[3,2]
+matrix[,2]
+rm(list=ls())
+matrix
+matrix<-matrix(egg_days, ncol=2, nrow=length(egg_days))
+#assignment#
+#
+#object#
+a<-1#
+#vector#
+vec<-c(a,4)#
+#matrix#
+mat<-matrix(vec, nrow=2, ncol=2)#
+#function#
+breakfast_cals<-function(eggs=0, pancakes=0, bacon=0){#
+	eggs*78 + pancakes*86 + bacon*43#
+}#
+egg_days<-c(1,0,5,2,3,2)#
+pancake_days<-c(2,2,2,2,2,2)#
+bacon_days<-c(2,0)#
+#
+breakfast_cals(egg_days, pancake_days, bacon_days)#
+#practice:#
+#
+#write a function to convert celsius to fahrenheit#
+#
+#Use that function to make a 2-column matrix, the first column of celsius from 0 to 50, the second of corresponding fahrenheit values#
+#Make a matrix where the first column is a population with phenotype values between 0 and 10 (may be drawn randomly using rnorm() or runif())#
+#
+#use the sample() function to fill the second column with a second generation drawn from the first generation. There are multiple ways to do this!#
+#
+#do this for 10 generations.#
+#
+#wouldn't a loop be nice now?
+egg_mat<-matrix(egg_days, ncol=2, nrow=length(egg_days))
+egg_mat
+egg_mat[,2]
+egg_mat[,2]<-0
+egg_mat
+plot(egg_mat)
+plot(egg_mat[,1]~egg_mat[,2])
+24.65+78.70+64
+(24.65+78.70+64)/2
+119.57/2
+2000*0.53
+rbinom(10,1,0.5)
+rbinom(1,10,0.5)
+rbinom(10,1,0.5)
+matrix(NA, ncol=5, nrow=5)
+matrix(c(0,1), ncol=5, nrow=5)
+matrix(c(0,1,2), ncol=5, nrow=5)
+mat<-matrix(0, nrow=5, ncol=2)
+mat
+mat[,1]<-1:5
+mat
+mat[,3]<-1
+install.packages("viridis")#
+install.packages("mgcv")#
+install.packages("boot")#
+install.packages("magick")#
+#
+library(viridis)#
+library(mgcv)  #needed for gam command#
+library(boot)  #needed for the inv.logit command#
+#library(magick)
+2200*0.53
+?ncol
+583.34+291.67
+12/5
+35/12
+#draw body sizes that differ between Treatments using rnorm#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=5), Resp=c(rnorm(5, 5, 1), rnorm(5,3,1)))
+Results
+boxplot(Results)
+boxplot(Results$Resp~Results$Trt)
+lm(Resp~Trt, data=Results)
+summary(lm(Resp~Trt, data=Results))
+#plot mean body sizes from each treatment#
+boxplot(Results$Resp~Results$Trt)
+sample_test<-function(s_size){#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=s_size), Resp=c(rnorm(s_size, 5, 1), rnorm(s_size,3,1)))#
+Results#
+}
+sample_test(10)
+sample_test<-function(s_size){#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=s_size), Resp=c(rnorm(s_size, 5, 1), rnorm(s_size,3,1)))#
+boxplot(Results$Resp~Results$Trt)#
+}
+sample_test<-function(s_size){#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=s_size), Resp=c(rnorm(s_size, 5, 1), rnorm(s_size,3,1)))#
+Results#
+}#
+#
+sample_test(10)#
+boxplot(Results$Resp~Results$Trt)
+sample_test(100)#
+boxplot(Results$Resp~Results$Trt)
+sample_test<-function(s_size){#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=s_size), Resp=c(rnorm(s_size, 5, 1), rnorm(s_size,3,1)))#
+Results#
+}#
+#
+output<-sample_test(100)#
+boxplot(output$Resp~output$Trt)
+output<-sample_test(10)#
+boxplot(output$Resp~output$Trt)
+output<-sample_test(1000)#
+boxplot(output$Resp~output$Trt)
+output<-sample_test(2)#
+boxplot(output$Resp~output$Trt)
+output<-sample_test(5)#
+boxplot(output$Resp~output$Trt)
+output<-sample_test(5)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+output<-sample_test(10)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+output<-sample_test(100)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+?boxplot
+sample_test<-function(s_size, sd){#
+Results<-data.frame(Trt=rep(c('A', 'B'), times=1, each=s_size), Resp=c(rnorm(s_size, 5, sd), rnorm(s_size,3,sd)))#
+Results#
+}#
+#
+output<-sample_test(s_size=100, sd=2)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+output<-sample_test(s_size=1000, sd=2)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim#
+#
+#Run it for different sample si
+output<-sample_test(s_size=100, sd=2)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+output<-sample_test(s_size=100, sd=1)#
+boxplot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+plot(output$Resp~output$Trt, ylim=c(0,8))#try adding ylim
+10.49+29.33+18.60+15.55+19.95+5.69+6.39+7.16
+113.16/2
+348.69/4
+150/5
+14+33+18+18+22
+21+15+32+13+25+16+33
+155+15
+170-105
+155/7
+2046/15
+136/4
+30*15
+30*15*4.5
+100000/12
+3/8
+47.71/2
+60*1.75
+500/20
+52*5
+260/25
+200/8
+exp^2
+exp^(1/2)
+e^(1/2)
+exp
+exp(1/2)
+exp(-1/2)
+exp(-1/2)+e(-0.08^2/2*(0.1^2))
+exp(-1/2)+exp(-0.08^2/2*(0.1^2))
+exp(-1/2)+exp((-0.08^2)/2*(0.1^2))
+exp((-0.08^2)/2*(0.1^2))
+exp((-0.05^2)/2*(0.1^2))
+exp((-0.09^2)/2*(0.1^2))
+exp((-0.1^2)/2*(0.1^2))
+exp((-0.1^2)/(2*(0.1^2)))
+exp((-0.08^2)/(2*(0.1^2)))
+exp((-0.07^2)/(2*(0.1^2)))
+exp((-0.01^2)/(2*(0.1^2)))
+1-0.9*(4*0.1*0.9)^1
+1-0.1*(4*0.1*0.9)^1
+1-0.1*(4*0.2*0.9)^1
+1-0.1*(4*0.3*0.9)^1
+1-0.1*(4*0.4*0.9)^1
+1-0.1*(4*0.2*0.8)^1
+1-0.1*(4*0.3*0.7)^1
+1-0.1*(4*0.4*0.6)^1
+1-0.1*(4*0.4*0.6)^16
+1-0.1*(4*0.5*0.5)^16
+1-0.1*(4*0.3*0.7)^16
+1-0.1*(4*0.3*0.7)^(1/16)
+1/16
+x=0.5#
+#
+survival<-function(x){#
+	1-0.1*(4*x*(1-x))^(1/16)#
+}
+survival(x)
+survival(0.6)
+sapply(seq(0,1, by=0.1), survival)
+plot(sapply(seq(0,1, by=0.1), survival))
+survival<-function(x, B=1){#
+	1-0.1*(4*x*(1-x))^B)#
+}#
+#
+survival(0.6)#
+plot(sapply(seq(0,1, by=0.1), survival))
+survival<-function(x, B=1){#
+	1-0.1*(4*x*(1-x))^B)#
+}#
+#
+survival(0.6)
+survival<-function(x, B=1){#
+	1-0.1*(4*x*(1-x))^B#
+}#
+#
+survival(0.6)
+plot(sapply(seq(0,1, by=0.1), survival))
+survival<-function(x, B=16){#
+	1-0.1*(4*x*(1-x))^B#
+}#
+#
+survival(0.6)#
+plot(sapply(seq(0,1, by=0.1), survival))
+279.93+17.54
+(279.93+17.54)/2
+69/12
+(69/12)/2
+29.79+15.75
+sample(1:4, 4, replace=FALSE)
+runif(1,min=0, max=1)
+sample(1:4, 3, replace=FALSE)
+87.65*2
+110+8+29+16+17+44+75+2+8+59+29+66+38+40+25+13+220+29+12+29+50
+5400/60
+8*60
+480/9
+480/90
+2.7*(480/90)
+252+368.96
+620.96-367.96
+5000000/5000
+25.40*8
+14.86*2
+22000/60000000
+36000/328000000
+686991/328000000
+686991/3280000
+36000/3280000
+library(broom)
+365*24*60*60
+264/23
+246/23
+3090/39
+28*(3090/39)
+10/8
+10000/50
+200*1.25
+2500/60
+setwd('~/Dropbox/diapause_ibm')#
+rm(list=ls())#
+source('src/initialize.R')#
+library(abind)#
+## ******************************************************************#
+#
+ALT <- FALSE#
+#
+#set.seed(8)#
+#####Make sure model_output is a folder in your pwd!#
+#
+run_multiple(reps=1,#
+             land_type="uniform",#
+             gens=50,#
+             mut_rate = 0.001,#
+             mortality=0.05,#
+             dispersal_evolution=TRUE,#
+             diap_length_evolution=TRUE,#
+             ncores=1,#
+             print_every=1)
+run_multiple(reps=1,#
+             land_type="uniform",#
+             gens=50,#
+             mut_rate = 0.05,#
+             mortality=0.05,#
+             dispersal_evolution=TRUE,#
+             diap_length_evolution=TRUE,#
+             ncores=1,#
+             print_every=1)
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 4, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm")#
+source('src/initialize.R')#
+library(abind)#
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-summary_diap[seq(1, nrow(summary_diap), length=1000),]#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,15), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=10, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		lines(x~seq(1, length(mean_diap)), col=rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}#
+#
+plot_correlation<-function(file_path, header, gen=10000, max=50){#
+	load(file_path)#
+	output<-lapply(out.list, FUN=function(x) {#
+		#browser()#
+		x[[2]][[1]][[ceiling(gen/(x[[1]]$print_every))]]})#
+	reps <- length(output)#
+	plot(NA, ylim=c(0,1200), xlim=c(0,max), ylab="Frequency", xlab="Diapause length")#
+	breaks=seq(1,max)#
+	mtext(header, side=3, adj=0.01)#
+	sapply(1:reps, FUN=function(rep){#
+		#points(output[[rep]][,'diap_prob']~output[[rep]][,'diap_length'], col=rep, pch=16, cex=0.3)#
+		hist(output[[rep]][,'diap_length'], add=TRUE, breaks=breaks, col=rep)	#
+	})#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 4, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 4, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 4, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 3, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-summary_diap[seq(1, nrow(summary_diap), length=1000),]#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		lines(x~seq(1, length(mean_diap)), col=rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 3, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-summary_diap[seq(1, nrow(summary_diap), length=1000),]#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	col <- 0#
+	apply(short_sum, 2, FUN=function(x){#
+		col <- col+1#
+		lines(x~seq(1, length(mean_diap)), col= col) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-summary_diap[seq(1, nrow(summary_diap), length=1000),]#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		col <- col+1#
+		lines(x~seq(1, length(mean_diap)), col= col) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-summary_diap[seq(1, nrow(summary_diap), length=1000),]
+short_sum
+short_sum[1001,]<-seq(1:ncol(short_sum))
+short_sum[1001,]<-NA
+rbind(short_sum, seq(1:ncol(short_sum)))
+ncol(summary_diap)
+short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(1:ncol(summary_diap)))
+Q
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(1:ncol(summary_diap)))#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		browser()#
+		lines(x~seq(1, length(mean_diap)), col= col) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+x
+Q
+setwd("/Users/meredith/Dropbox/diapause_ibm")#
+source('src/initialize.R')#
+library(abind)#
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(1:ncol(summary_diap)))#
+	mean_diap <- apply(short_sum, 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		lines(x[1:1000]~seq(1, length(mean_diap-1)), col=x[1001]) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}#
+#
+plot_correlation<-function(file_path, header, gen=10000, max=50){#
+	load(file_path)#
+	output<-lapply(out.list, FUN=function(x) {#
+		#browser()#
+		x[[2]][[1]][[ceiling(gen/(x[[1]]$print_every))]]})#
+	reps <- length(output)#
+	plot(NA, ylim=c(0,1200), xlim=c(0,max), ylab="Frequency", xlab="Diapause length")#
+	breaks=seq(1,max)#
+	mtext(header, side=3, adj=0.01)#
+	sapply(1:reps, FUN=function(rep){#
+		#points(output[[rep]][,'diap_prob']~output[[rep]][,'diap_length'], col=rep, pch=16, cex=0.3)#
+		hist(output[[rep]][,'diap_length'], add=TRUE, breaks=breaks, col=rep)	#
+	})#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm")#
+source('src/initialize.R')#
+library(abind)#
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(1:ncol(summary_diap)))#
+	mean_diap <- apply(short_sum[1:1000,], 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		lines(x[1:1000]~seq(1, length(mean_diap-1)), col=x[1001]) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm")#
+source('src/initialize.R')#
+library(abind)#
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(2:(1+ncol(summary_diap))))#
+	mean_diap <- apply(short_sum[1:1000,], 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		lines(x[1:1000]~seq(1, length(mean_diap-1)), col=alpha(x[1001], 0.4)) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}#
+#
+plot_correlation<-function(file_path, header, gen=10000, max=50){#
+	load(file_path)#
+	output<-lapply(out.list, FUN=function(x) {#
+		#browser()#
+		x[[2]][[1]][[ceiling(gen/(x[[1]]$print_every))]]})#
+	reps <- length(output)#
+	plot(NA, ylim=c(0,1200), xlim=c(0,max), ylab="Frequency", xlab="Diapause length")#
+	breaks=seq(1,max)#
+	mtext(header, side=3, adj=0.01)#
+	sapply(1:reps, FUN=function(rep){#
+		#points(output[[rep]][,'diap_prob']~output[[rep]][,'diap_length'], col=rep, pch=16, cex=0.3)#
+		hist(output[[rep]][,'diap_length'], add=TRUE, breaks=breaks, col=rep)	#
+	})#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm")#
+source('src/initialize.R')#
+library(abind)#
+library(scales)#
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(2:(1+ncol(summary_diap))))#
+	mean_diap <- apply(short_sum[1:1000,], 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		lines(x[1:1000]~seq(1, length(mean_diap-1)), col=alpha(x[1001], 0.4)) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)
+plot_multiple<-function(file_path, col, ylab="", is_list=TRUE){#
+	load(file_path)#
+	if(is_list){#
+		output<-abind(lapply(out.list, FUN=function(x) x[[2]][[2]]), along=3)#
+	}#
+	#browser()#
+	summary_diap <- apply(output, 3, FUN= function(x) x[,col])#
+	gens <- nrow(summary_diap)#
+	#briefer summary for less memory intense images#
+	short_sum<-rbind(summary_diap[seq(1, nrow(summary_diap), length=1000),], seq(2:(1+ncol(summary_diap))))#
+	mean_diap <- apply(short_sum[1:1000,], 1, FUN=mean)#
+	if(col==6){#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,5), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=3, b=0)		#
+	}#
+	else {#
+		plot(mean_diap~seq(1,length(mean_diap)), ylim=c(0,1), type='l', lwd=2, xaxt='n', ylab=ylab, xlab= "Generations")#
+		abline(a=0.2, b=0)#
+	}#
+	apply(short_sum, 2, FUN=function(x){#
+		#browser()#
+		lines(x[1:1000]~seq(1, length(mean_diap-1)), col=alpha(x[1001], 0.5)) #rgb(0,1,0.6,0.5))#
+	})#
+#
+	axis(side=1, at=seq(0,1000, by=200), labels=seq(0, gens, length=6))#
+}
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 3, "Mean dispersal distance", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 3, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)
+setwd("/Users/meredith/Dropbox/diapause_ibm/model_output")#
+#
+par(mfrow=c(2,3), mar=c(2.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 5, "Mean diapause probability", is_list=TRUE)#
+mtext("a.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 5, is_list=TRUE)#
+mtext("b.Gaussian - disp ev", side=3, adj=0.01)#
+#
+par(mar=c(2.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 5, is_list=TRUE)#
+mtext("c.Noisy - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 4.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_uniform_mort0.05_10x10000.Rdata", 6, "Mean diapause length", is_list=TRUE)#
+mtext("d.Uniform - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_one_gauss_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("e.Gaussian - disp ev, diap length ev", side=3, adj=0.01)#
+#
+par(mar=c(4.1, 2.1, 2.1, 1.1))#
+plot_multiple("diapause_disp_ev_T_diap_length_ev_T_noisy_mort0.05_10x10000.Rdata", 6, is_list=TRUE)#
+mtext("f.Noisy - disp ev, diap length ev", side=3, adj=0.01)

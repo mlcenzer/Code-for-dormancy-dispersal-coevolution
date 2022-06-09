@@ -35,7 +35,7 @@ base_prms <- function(land_type='striped',
 ##
 ## sigma_s: spatial radius of competition
 ## crit_distance: critical interaction distance
-## N: number of offspring
+## N: size of initialized population
 ##
 ## c: Strength of competition for resources
 ## f_max: maximum fecundity

@@ -39,10 +39,11 @@ noisy <- function(x, y, mat, res) {
 
 ## stripes : number of equal width stripes
 striped <- function(x, y, stripes=1, s_dim){
-	bounds <- s_dim/(stripes*2) #0--> <bounds = uninhabitable, bounds--> <2*bounds = habitable, etc
-	#browser()
-	k<-1+floor(x/bounds)%%2
-	k
+  if(stripes==0) return(1)
+  bounds <- s_dim/(stripes*2) #0--> <bounds = uninhabitable, bounds--> <2*bounds = habitable, etc
+                                        
+  k<-1+floor(x/bounds)%%2
+  k
 }
 
 
